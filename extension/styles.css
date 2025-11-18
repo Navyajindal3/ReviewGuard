@@ -1,0 +1,39 @@
+/* -------- CHIP (Grammarly-ish pill) -------- */
+.frg-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 10px; border-radius:9999px;
+  font:600 12px/18px system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color:#111827; background:#f3f4f6; border:1px solid #e5e7eb;
+  box-shadow:0 1px 2px rgba(0,0,0,.06); cursor:default;
+  transition:box-shadow .15s ease, transform .04s ease, background .15s ease;
+}
+.frg-chip .frg-dot { width:8px; height:8px; border-radius:9999px; background:currentColor; }
+.frg-chip.fake    { color:#991b1b; background:#fef2f2; border-color:#fecaca; }
+.frg-chip.genuine { color:#065f46; background:#ecfdf5; border-color:#bbf7d0; }
+.frg-chip:hover   { box-shadow:0 2px 6px rgba(0,0,0,.12); }
+
+/* -------- POPOVER (clean card) -------- */
+.frg-pop {
+  position:absolute; z-index:2147483647;
+  min-width:260px; max-width:320px;
+  background:#fff; border:1px solid #e5e7eb; border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12), 0 3px 8px rgba(0,0,0,.06);
+  padding:12px; color:#111827;
+  font:500 13px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  display:none;
+}
+.frg-pop::after{ content:""; position:absolute; top:-6px; left:16px;
+  border-width:6px; border-style:solid; border-color:transparent transparent #e5e7eb transparent;}
+.frg-pop::before{ content:""; position:absolute; top:-5px; left:16px;
+  border-width:6px; border-style:solid; border-color:transparent transparent #fff transparent;}
+
+.frg-row { display:flex; justify-content:space-between; gap:8px; margin-bottom:6px; }
+.frg-title { font-weight:700; }
+.frg-subtle { color:#6b7280; font-weight:500; }
+.frg-progress { height:8px; background:#f3f4f6; border-radius:9999px; overflow:hidden; margin:6px 0 10px; }
+.frg-progress > i { display:block; height:100%; background:#10b981; }
+.frg-pop.fake .frg-progress > i { background:#ef4444; }
+
+/* optional: subtle fade-in */
+@keyframes frg-fade { from{opacity:0; transform:translateY(-2px)} to{opacity:1; transform:none}}
+.frg-pop[aria-live="on"] { animation:frg-fade .12s ease; }
